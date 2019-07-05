@@ -8,17 +8,20 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 
 public class ViewCourseEnrollmentList {
 
+    private Connection conn;
     public JFrame frame;
     private JTable table;
 
     /**
      * Create the application.
      */
-    public ViewCourseEnrollmentList() {
+    public ViewCourseEnrollmentList(Connection connec) {
+        conn = connec;
         initialize();
     }
 

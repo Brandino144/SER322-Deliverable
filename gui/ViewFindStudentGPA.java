@@ -7,17 +7,20 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 
 public class ViewFindStudentGPA {
 
+    private Connection conn;
     public JFrame frame;
     private JTable table;
 
     /**
      * Create the application.
      */
-    public ViewFindStudentGPA() {
+    public ViewFindStudentGPA(Connection connec) {
+        conn = connec;
         initialize();
     }
 

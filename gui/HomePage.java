@@ -175,7 +175,7 @@ public class HomePage {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ViewCourseEnrollmentList window = new ViewCourseEnrollmentList();
+                    ViewCourseEnrollmentList window = new ViewCourseEnrollmentList(conn);
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -188,7 +188,7 @@ public class HomePage {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ViewFindCourseGrade window = new ViewFindCourseGrade();
+                    ViewFindCourseGrade window = new ViewFindCourseGrade(conn);
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -201,7 +201,7 @@ public class HomePage {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ViewFindStudentGPA window = new ViewFindStudentGPA();
+                    ViewFindStudentGPA window = new ViewFindStudentGPA(conn);
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -214,7 +214,7 @@ public class HomePage {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ViewFindStudentGrades window = new ViewFindStudentGrades();
+                    ViewFindStudentGrades window = new ViewFindStudentGrades(conn);
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
