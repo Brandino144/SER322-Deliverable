@@ -171,6 +171,59 @@ public class HomePage {
         });
     }
     
+    public void ViewCourse() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ViewCourseEnrollmentList window = new ViewCourseEnrollmentList();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    
+    public void ViewCourseGrades() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ViewFindCourseGrade window = new ViewFindCourseGrade();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    
+    public void ViewStudentGPA() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ViewFindStudentGPA window = new ViewFindStudentGPA();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    
+    public void ViewStudentGrade() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ViewFindStudentGrades window = new ViewFindStudentGrades();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+    
     public void submitButtonPressed() {
         if (rdbtnAllData.isSelected()) {
             ViewDataPage("all");

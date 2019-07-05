@@ -20,22 +20,6 @@ public class ViewPrequisites {
     private JTable table;
 
     /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    ViewPrequisites window = new ViewPrequisites();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
      * Create the application.
      */
     public ViewPrequisites(Connection connec) {

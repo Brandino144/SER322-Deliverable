@@ -11,24 +11,8 @@ import java.awt.event.ActionEvent;
 
 public class ViewFindStudentGrades {
 
-    private JFrame frame;
+    public JFrame frame;
     private JTable table;
-
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    ViewFindStudentGrades window = new ViewFindStudentGrades();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the application.

@@ -22,22 +22,6 @@ public class DataPage {
     public JFrame frame;
     private JTable table;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    DataPage window = new DataPage();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     private Connection conn;
     
     /**
