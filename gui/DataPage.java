@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JList;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.List;
 import java.awt.event.ActionEvent;
@@ -93,5 +94,15 @@ public class DataPage {
         table = new JTable();
         table.setBounds(49, 155, 784, 568);
         frame.getContentPane().add(table);
+        
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(rdbtnStudents);
+        bg.add(rdbtnCourses);
+        bg.add(rdbtnInstructors);
+        bg.add(rdbtnDepartments);
+        bg.add(rdbtnMajors);
+        bg.add(rdbtnAdministrators);
+        bg.add(btnSubmit);
+        bg.add(btnGoBack);
     }
 }
