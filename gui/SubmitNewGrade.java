@@ -65,6 +65,11 @@ public class SubmitNewGrade {
         frame.getContentPane().add(comboBox_2);
         
         JButton btnSubmit = new JButton("Submit");
+        btnSubmit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                submitButton();
+            }
+        });
         btnSubmit.setBounds(378, 283, 117, 29);
         frame.getContentPane().add(btnSubmit);
         
@@ -78,6 +83,11 @@ public class SubmitNewGrade {
              frame.dispose();
             } 
           } );
+        
+    }
+    
+    // TODO
+    public void submitButton() {
         
     }
 
