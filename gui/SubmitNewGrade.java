@@ -11,12 +11,14 @@ import java.sql.Connection;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class SubmitNewGrade {
 
     public JFrame frame;
     
     private Connection conn;
+    private JTextField txtEnterGpa;
 
     /**
      * Create the application.
@@ -60,10 +62,6 @@ public class SubmitNewGrade {
         comboBox_1.setBounds(242, 137, 171, 27);
         frame.getContentPane().add(comboBox_1);
         
-        JComboBox comboBox_2 = new JComboBox();
-        comboBox_2.setBounds(242, 209, 85, 27);
-        frame.getContentPane().add(comboBox_2);
-        
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -76,6 +74,11 @@ public class SubmitNewGrade {
         JButton btnGoBack = new JButton("Go Back");
         btnGoBack.setBounds(6, 6, 117, 29);
         frame.getContentPane().add(btnGoBack);
+        
+        txtEnterGpa = new JTextField();
+        txtEnterGpa.setBounds(242, 208, 130, 26);
+        frame.getContentPane().add(txtEnterGpa);
+        txtEnterGpa.setColumns(10);
         
         btnGoBack.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
@@ -90,5 +93,4 @@ public class SubmitNewGrade {
     public void submitButton() {
         
     }
-
 }
