@@ -43,7 +43,7 @@ public class ViewPrequisites {
         }
         try {
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT `COURSE ID` FROM COURSES;");
+            rs = stmt.executeQuery("SELECT DISTINCT `COURSE ID` FROM COURSES;");
             while (rs.next()) {
                 ids.add(rs.getString(1));
             }
