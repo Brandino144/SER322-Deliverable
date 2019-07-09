@@ -224,6 +224,20 @@ public class HomePage {
 
     }
     
+    public void FindCourseGrade() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ViewFindCourseGrade window = new ViewFindCourseGrade(conn);
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+    
     public void submitButtonPressed() {
         if (rdbtnAllData.isSelected()) {
             ViewDataPage("all");
@@ -242,7 +256,7 @@ public class HomePage {
         } else if (rdbtnFindStudentGpas.isSelected()) {
             ViewStudentGPA();
         } else if (rdbtnFindCourseGrades.isSelected()) {
-            ViewDataPage("coursegrades");
+            FindCourseGrade(); 
             
         } 
     }
