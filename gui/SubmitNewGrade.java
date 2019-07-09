@@ -4,10 +4,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +23,8 @@ import javax.swing.JTextField;
 public class SubmitNewGrade {
 
     public JFrame frame;
-    
+    private JComboBox comboBox;
+    private JComboBox comboBox_1;
     private Connection conn;
     private JTextField txtEnterGpa;
 
@@ -51,15 +55,15 @@ public class SubmitNewGrade {
         frame.getContentPane().add(lblAsuId);
         
         JLabel lblCourse = new JLabel("Course:");
-        lblCourse.setBounds(69, 141, 61, 16);
+        lblCourse.setBounds(69, 132, 61, 16);
         frame.getContentPane().add(lblCourse);
         
         JLabel lblGrade = new JLabel("Grade (0.00-4.00)");
-        lblGrade.setBounds(69, 213, 125, 16);
+        lblGrade.setBounds(69, 190, 125, 16);
         frame.getContentPane().add(lblGrade);
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(242, 71, 125, 27);
+        comboBox = new JComboBox();
+        comboBox.setBounds(142, 71, 125, 27);
         frame.getContentPane().add(comboBox);
         ArrayList<String> ASUIDs = fillComboBox1();
         
@@ -67,11 +71,11 @@ public class SubmitNewGrade {
             comboBox.addItem(ASUIDs.get(i));
         }
         
-        JComboBox comboBox_1 = new JComboBox();
-        comboBox_1.setBounds(242, 137, 171, 27);
+        comboBox_1 = new JComboBox();
+        comboBox_1.setBounds(142, 128, 171, 27);
         frame.getContentPane().add(comboBox_1);
         
-        ArrayList<String> CourseIDs = fillComboBox1();
+        ArrayList<String> CourseIDs = fillComboBox2();
         
         for(int i = 0; i < CourseIDs.size(); i++) {
             comboBox_1.addItem(CourseIDs.get(i));
@@ -91,7 +95,7 @@ public class SubmitNewGrade {
         frame.getContentPane().add(btnGoBack);
         
         txtEnterGpa = new JTextField();
-        txtEnterGpa.setBounds(242, 208, 130, 26);
+        txtEnterGpa.setBounds(206, 185, 130, 26);
         frame.getContentPane().add(txtEnterGpa);
         txtEnterGpa.setColumns(10);
         
@@ -167,22 +171,27 @@ public class SubmitNewGrade {
         return ids;
     }
     
-    // TODO
     public void submitButton() {
-        /*try {
-            Class.forName(Driver);
-            Connection conn = DriverManager.getConnection();
-            String query = "UPDATE GRADES SET GRADE =" + txtEnterGpa.getText() + "WHERE ASU ID = " + "Course ID = " + ;
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, );
-            stmt.setString(2, );
-            stmt.setString(3, txtEnterGpa.getText());
+        PreparedStatement stmt = null;
+        
+        try {
+            String query = "UPDATE GRADES SET GRADE =" + txtEnterGpa.getText() + "WHERE ASU ID = " + comboBox.getSelectedItem() + " AND Course ID = " + comboBox_1.getSelectedItem();
+            stmt = conn.prepareStatement(query);
             stmt.execute();
             JOptionPane.showMessageDialog(null, "New grade submitted!");
+            stmt.close();
         }
         catch (Exception e){
             e.printStackTrace();
-        }*/
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
 
