@@ -240,7 +240,7 @@ public class HomePage {
         } else if (rdbtnGrades.isSelected()) {
             InsertGrade();
         } else if (rdbtnFindStudentGpas.isSelected()) {
-            ViewDataPage("gpa");
+            ViewStudentGPA();
         } else if (rdbtnFindCourseGrades.isSelected()) {
             ViewDataPage("coursegrades");
             
