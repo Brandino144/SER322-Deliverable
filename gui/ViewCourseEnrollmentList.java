@@ -132,7 +132,7 @@ public class ViewCourseEnrollmentList {
         }
         try {
             stmt = conn.prepareStatement("SELECT DISTINCT student.`First Name`, student.`Last Name`,student.`ASU ID`" +
-            "FROM student, grades" + 
+            "FROM student, grades " + 
             "WHERE `Course ID` = ? AND Section = ? AND grades.`ASU ID` = student.`ASU ID`;");
             stmt.setString(1, split[0]);
             stmt.setInt(2, Integer.parseInt(split[1]));
@@ -141,7 +141,10 @@ public class ViewCourseEnrollmentList {
             textArea.setText("First Name\tLast Name\tASU ID\n");
             
             while (rs.next()) {
-                textArea.setText(textArea.getText());
+                String newline = rs.getString(1) + "\t" 
+                                + rs.getString(2) + "\t" 
+                                + rs.getString(3) + "\n";
+                textArea.setText(textArea.getText()+newline);
             }
 
         } catch (SQLException e) {
@@ -162,5 +165,4 @@ public class ViewCourseEnrollmentList {
     public void submitButtonPressed() {
         GetCourses((String) comboBox.getSelectedItem());
     }
-
 }
