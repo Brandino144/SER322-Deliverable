@@ -117,7 +117,7 @@ public class SubmitNewGrade {
             rs = stmt.executeQuery("SELECT * FROM GRADES");
             
             while (rs.next()) {
-                ids.add(rs.getString(1));
+                ids.add(rs.getString("ASU ID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -148,7 +148,7 @@ public class SubmitNewGrade {
             rs = stmt.executeQuery("SELECT * FROM GRADES");
             
             while (rs.next()) {
-                ids.add(rs.getString(2));
+                ids.add(rs.getString("COURSE ID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
