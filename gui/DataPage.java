@@ -58,7 +58,7 @@ public class DataPage {
      * Initialize the contents of the frame.
      */
     private void initialize(String data) {
-        frame = new JFrame();
+        frame = new JFrame("Database Info");
         frame.setBounds(100, 100, 900, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
