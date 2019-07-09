@@ -45,7 +45,7 @@ javac -cp lib/mysql-connector-java-5.1.47-bin.jar deliverablemain/deliverableMai
 
 Run the java program
 ```bash
-java -cp lib/mysql-connector-java-5.1.47-bin.jar:. deliverablemain.deliverableMain "mysql://localhost:3306/Grade_Keeper_2?" root SER322 org.mysql.jdbc.Driver
+java -cp lib/mysql-connector-java-5.1.47-bin.jar:. deliverablemain.deliverableMain "mysql://localhost:3306/Grade_Keeper_2?" 'YOURDBUSERNAME' 'YOURDBPASSWORD' org.mysql.jdbc.Driver
 ```
 
 ### Evaluation and Testing
