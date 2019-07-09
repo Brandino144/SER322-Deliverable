@@ -45,7 +45,7 @@ public class ViewFindCourseGrade {
         }
         try {
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT `Course ID` FROM COURSES");
+            rs = stmt.executeQuery("SELECT DISTINCT `Course ID` FROM COURSES");
             while (rs.next()) {
                 ids.add(rs.getString(1));
             }
