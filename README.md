@@ -4,7 +4,7 @@
 
 **Grade Keeper** is a SQL database containing all information pertaining to the Employees, Students, and Instructors
 at a fictional university. **Grade Keeper** includes both the database and the necessary front end Java program to read 
-and manipulate the DB.
+and manipulate the database.
 
 ## Table Of Contents
 - [Table Of Contents](#table-of-contents)
@@ -15,7 +15,7 @@ and manipulate the DB.
 - [Evaluation and Testing](#evaluation-and-testing)
 - [Built With](#built-with)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
+- [Acknowledgements](#acknowledgements)
 
 ### Getting Started
 
@@ -80,7 +80,7 @@ java -cp lib/mysql-connector-java-5.1.47-bin.jar:. deliverablemain.deliverableMa
 * Kevin Halliwell
 * Brandon Kynsi
 
-### Acknowledgments
+### Acknowledgements
 
 ```
 TBD Will be updated before submitting
