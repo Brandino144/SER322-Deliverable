@@ -22,9 +22,8 @@ public class ViewFindCourseGrade {
 
     private Connection conn;
     public JFrame frame;
-    private JTable table;
     private JComboBox comboBox;
-    private JTextArea table1;
+    private JTextArea table;
 
     /**
      * Create the application.
@@ -96,8 +95,13 @@ public class ViewFindCourseGrade {
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.setBounds(373, 51, 117, 29);
         frame.getContentPane().add(btnSubmit);
+        btnSubmit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                submitButtonPressed();
+            }
+        });
         
-        table = new JTable();
+        table = new JTextArea();
         table.setBounds(49, 155, 784, 568);
         frame.getContentPane().add(table);
         
@@ -124,11 +128,11 @@ public class ViewFindCourseGrade {
             stmt.setString(1, courseID);
             rs = stmt.executeQuery();
             
-            table1.setText("ASU ID\tGrade\n");
+            table.setText("ASU ID\tGrade\n");
             while (rs.next()) {
                 String newline = rs.getString(1) + "\t" 
                                 + rs.getString(2) + "\n";
-                table1.setText(table1.getText()+newline);
+                table.setText(table.getText()+newline);
             }
             
         } catch (SQLException e) {
