@@ -33,6 +33,12 @@ public class DataPage {
     private Connection conn;
     
     private JRadioButton rdbtnStudents;
+    private JRadioButton rdbtnCourses;
+    private JRadioButton rdbtnInstructors;
+    private JRadioButton rdbtnDepartments;
+    private JRadioButton rdbtnMajors;
+    private JRadioButton rdbtnAdministrators;
+    
     
     /**
      * Create the application.
@@ -59,23 +65,23 @@ public class DataPage {
         rdbtnStudents.setBounds(49, 45, 141, 23);
         frame.getContentPane().add(rdbtnStudents);
         
-        JRadioButton rdbtnCourses = new JRadioButton("Courses");
+        rdbtnCourses = new JRadioButton("Courses");
         rdbtnCourses.setBounds(176, 45, 98, 23);
         frame.getContentPane().add(rdbtnCourses);
         
-        JRadioButton rdbtnInstructors = new JRadioButton("Instructors");
+        rdbtnInstructors = new JRadioButton("Instructors");
         rdbtnInstructors.setBounds(299, 45, 141, 23);
         frame.getContentPane().add(rdbtnInstructors);
         
-        JRadioButton rdbtnDepartments = new JRadioButton("Departments");
+        rdbtnDepartments = new JRadioButton("Departments");
         rdbtnDepartments.setBounds(437, 45, 141, 23);
         frame.getContentPane().add(rdbtnDepartments);
         
-        JRadioButton rdbtnMajors = new JRadioButton("Majors");
+        rdbtnMajors = new JRadioButton("Majors");
         rdbtnMajors.setBounds(590, 45, 98, 23);
         frame.getContentPane().add(rdbtnMajors);
         
-        JRadioButton rdbtnAdministrators = new JRadioButton("Administrators");
+        rdbtnAdministrators = new JRadioButton("Administrators");
         rdbtnAdministrators.setBounds(692, 45, 141, 23);
         frame.getContentPane().add(rdbtnAdministrators);
         
@@ -139,13 +145,197 @@ public class DataPage {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error inserting into the customer table");
+            System.out.println("SQL Error");
             e.printStackTrace();
         }
         finally {
             try {
                 if (stmt != null)
                     stmt.close();
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void displayCourses() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        if (conn == null) {
+            return;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM COURSES");
+
+            table.setText("Course ID\tCredits\tInstructor\tName\n");
+            while (rs.next()) {
+                String newline = rs.getString(1) + "\t" 
+                                + rs.getString(5) + "\t" 
+                                + rs.getString(7) + "\t" 
+                                + rs.getString(3) + "\n";
+                table.setText(table.getText()+newline);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Error");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void displayInstructors() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        if (conn == null) {
+            return;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM INSTRUCTOR");
+
+            table.setText("FirstName\tLastName\tEmployeeID\tEmail\n");
+            while (rs.next()) {
+                String newline = rs.getString(1) + "\t" 
+                                + rs.getString(2) + "\t" 
+                                + rs.getString(5) + "\t"
+                                + rs.getString(6) + "\n";
+                table.setText(table.getText()+newline);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Error");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void displayDepartments() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        if (conn == null) {
+            return;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM `ACADEMIC DEPARTMENTS`");
+
+            table.setText("Name\t\tAddress\n");
+            while (rs.next()) {
+                String newline = rs.getString(1) + "\t\t" 
+                                + rs.getString(2) + "\n";
+                table.setText(table.getText()+newline);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Error");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void displayMajors() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        if (conn == null) {
+            return;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM MAJORS");
+
+            table.setText("Name\tOnline\tDepartment\n");
+            while (rs.next()) {
+                String newline = rs.getString(1) + "\t" 
+                                + rs.getString(2) + "\t"
+                                + rs.getString(3) + "\n";
+                table.setText(table.getText()+newline);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Error");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void displayAdmin() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        if (conn == null) {
+            return;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM ADMINISTRATOR");
+
+            table.setText("FirstName\tLastName\tEmployeeID\temail\n");
+            while (rs.next()) {
+                String newline = rs.getString(3) + "\t" 
+                                + rs.getString(4) + "\t"
+                                + rs.getString(2) + "\t"
+                                + rs.getString(1) + "\n";
+                table.setText(table.getText()+newline);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Error");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (rs != null)
+                    rs.close();
             } catch (SQLException e) {
                 System.out.println("Error closing sql statement");
                 e.printStackTrace();
@@ -157,6 +347,20 @@ public class DataPage {
         if(rdbtnStudents.isSelected()) {
             displayStudents();
         }
-        
+        else if(rdbtnCourses.isSelected()) {
+            displayCourses();
+        }
+        else if(rdbtnInstructors.isSelected()) {
+            displayInstructors();
+        }
+        else if (rdbtnDepartments.isSelected()) {
+            displayDepartments();
+        }
+        else if (rdbtnMajors.isSelected()) {
+            displayMajors();
+        }
+        else if (rdbtnAdministrators.isSelected()) {
+            displayAdmin();
+        }
     }
 }
