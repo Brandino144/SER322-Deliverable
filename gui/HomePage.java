@@ -83,11 +83,11 @@ public class HomePage {
         frame.getContentPane().add(rdbtnAllData);
         
         rdbtnStudent = new JRadioButton("Student");
-        rdbtnStudent.setBounds(113, 96, 141, 23);
+        rdbtnStudent.setBounds(135, 96, 141, 23);
         frame.getContentPane().add(rdbtnStudent);
         
         rdbtnCourses = new JRadioButton("Courses");
-        rdbtnCourses.setBounds(208, 96, 141, 23);
+        rdbtnCourses.setBounds(333, 96, 141, 23);
         frame.getContentPane().add(rdbtnCourses);
         
         rdbtnPrereq = new JRadioButton("Prerequisites");
