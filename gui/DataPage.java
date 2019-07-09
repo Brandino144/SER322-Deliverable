@@ -112,12 +112,6 @@ public class DataPage {
             } 
           } );
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(49, 81, 152, 27);
-        comboBox.addItem("Ascending");
-        comboBox.addItem("Descending");
-        frame.getContentPane().add(comboBox);
-        
         table = new JTextArea();
         table.setBounds(49, 155, 784, 568);
         frame.getContentPane().add(table);
