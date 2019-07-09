@@ -47,7 +47,7 @@ public class HomePage {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
+        frame = new JFrame("Home Page");
         frame.setBounds(100, 100, 900, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
@@ -224,6 +224,20 @@ public class HomePage {
 
     }
     
+    public void FindCourseGrade() {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ViewFindCourseGrade window = new ViewFindCourseGrade(conn);
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+    
     public void submitButtonPressed() {
         if (rdbtnAllData.isSelected()) {
             ViewDataPage("all");
@@ -240,9 +254,9 @@ public class HomePage {
         } else if (rdbtnGrades.isSelected()) {
             InsertGrade();
         } else if (rdbtnFindStudentGpas.isSelected()) {
-            ViewDataPage("gpa");
+            ViewStudentGPA();
         } else if (rdbtnFindCourseGrades.isSelected()) {
-            ViewDataPage("coursegrades");
+            FindCourseGrade(); 
             
         } 
     }

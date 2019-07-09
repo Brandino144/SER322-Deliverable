@@ -31,21 +31,6 @@ public class ViewPrequisites {
     public ViewPrequisites(Connection connec) {
         conn = connec;
         initialize();
-        try {
-            Statement mystmt = conn.createStatement();
-            String sql = "SELECT * "
-                    + " FROM courses;";
-            ResultSet rs = mystmt.executeQuery(sql);
-            
-            textArea.setText("Course ID\tName\tTerm\n");
-            while (rs.next()) {
-            String newline = rs.getString(1) + "\t" + rs.getString(2) + "\t" +rs.getString(3) + "\n";
-            textArea.setText(textArea.getText()+newline);
-            }
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
     }
     public ArrayList<String> getCourseIds() {
         Statement stmt = null;
@@ -87,7 +72,7 @@ public class ViewPrequisites {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
+        frame = new JFrame("Database Info");
         frame.setBounds(100, 100, 900, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);

@@ -33,7 +33,7 @@ public class ViewFindStudentGrades {
         initialize();
     }
     
-    public ArrayList<String> getStudentIds() {
+    static public ArrayList<String> getStudentIds(Connection conn) {
         Statement stmt = null;
         ResultSet rs = null;
         
@@ -73,7 +73,7 @@ public class ViewFindStudentGrades {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
+        frame = new JFrame("Database Info");
         frame.setBounds(100, 100, 900, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
@@ -107,7 +107,7 @@ public class ViewFindStudentGrades {
         table.setBounds(49, 155, 784, 568);
         frame.getContentPane().add(table);
         
-        ArrayList<String> studentIds = getStudentIds();
+        ArrayList<String> studentIds = ViewFindStudentGrades.getStudentIds(conn);
         
         comboBox = new JComboBox();
         comboBox.setBounds(242, 71, 125, 27);

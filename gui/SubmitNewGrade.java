@@ -40,7 +40,7 @@ public class SubmitNewGrade {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
+        frame = new JFrame("Database Info");
         frame.setBounds(100, 100, 900, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
