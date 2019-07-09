@@ -40,12 +40,12 @@ Grade_Keeper_2.sql
 Compile the java program.
 
 ```bash
-javac -cp lib/mariadb-java-client-2.4.2.jar SER322/jdbclab.java
+javac -cp lib/mysql-connector-java-5.1.47-bin.jar deliverablemain/deliverableMain.java gui/HomePage.java gui/DataPage.java gui/SubmitNewGrade.java gui/ViewCourseEnrollmentList.java gui/ViewFindCourseGrade.java gui/ViewFindStudentGPA.java gui/ViewFindStudentGrades.java gui/ViewPrequisites.java
 ```
 
 Run the java program
 ```bash
-java -cp lib/mariadb-java-client-2.4.2.jar:. SER322.jdbclab "jdbc:mariadb://localhost:3306/JDBClab1??autoReconnect=true&&useSSL=false" root SER322 org.mariadb.jdbc.Driver query1
+java -cp lib/mysql-connector-java-5.1.47-bin.jar:. deliverablemain.deliverableMain "mysql://localhost:3306/Grade_Keeper_2?" root SER322 org.mysql.jdbc.Driver
 ```
 
 ### Evaluation and Testing
