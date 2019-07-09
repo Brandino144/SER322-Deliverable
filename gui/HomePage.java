@@ -236,7 +236,7 @@ public class HomePage {
         } else if (rdbtnCourseEnrollmentList.isSelected()) {
             ViewDataPage("enrollment");
         } else if (rdbtnFindStudentGrades.isSelected()) {
-            ViewDataPage("studentgrades");
+            ViewStudentGrade();
         } else if (rdbtnGrades.isSelected()) {
             InsertGrade();
         } else if (rdbtnFindStudentGpas.isSelected()) {

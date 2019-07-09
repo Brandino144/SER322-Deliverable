@@ -46,6 +46,12 @@ public class DataPage {
     public DataPage(String data, Connection connec) {
         conn = connec;
         initialize(data);
+        
+        if (data.equals("student")) {
+            displayStudents();
+        } else if(data.equals("courses")) {
+            displayCourses();
+        }
     }
 
     /**

@@ -5,9 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewFindStudentGrades {
@@ -22,6 +27,42 @@ public class ViewFindStudentGrades {
     public ViewFindStudentGrades(Connection connec) {
         conn = connec;
         initialize();
+    }
+    
+    public ArrayList<String> getStudentIds() {
+        Statement stmt = null;
+        ResultSet rs = null;
+        
+        ArrayList<String> ids = new ArrayList<String>();
+
+        if (conn == null) {
+            return null;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT `ASU ID` FROM STUDENT");
+            while (rs.next()) {
+                ids.add(rs.getString(1));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Error");
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+                if (rs != null)
+                    rs.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return ids;
     }
 
     /**
@@ -54,6 +95,15 @@ public class ViewFindStudentGrades {
         table = new JTable();
         table.setBounds(49, 155, 784, 568);
         frame.getContentPane().add(table);
+        
+        ArrayList<String> studentIds = getStudentIds();
+        
+        JComboBox comboBox = new JComboBox();
+        comboBox.setBounds(242, 71, 125, 27);
+        frame.getContentPane().add(comboBox);
+        for (int i = 0; i < studentIds.size(); i++) {
+            comboBox.addItem(studentIds.get(i));
+        }
     }
 
 }
