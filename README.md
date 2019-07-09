@@ -15,7 +15,6 @@ and manipulate the database.
 - [Evaluation and Testing](#evaluation-and-testing)
 - [Built With](#built-with)
 - [Authors](#authors)
-- [Acknowledgements](#acknowledgements)
 
 ### Getting Started
 
@@ -52,17 +51,14 @@ java -cp lib/mysql-connector-java-5.1.47-bin.jar:. deliverablemain.deliverableMa
 
 **Functions of the Java program**
 
-* Display all relations except prerequisites and grades
 * Display all students
 * Average GPA for a student
-* Total credit hours for a student
 * Adding grades for a student
 * Find grades for a specific student
 * List grades for a specific course
 * Display all courses with prerequisites
   - Drop down menu will allow you to choose course (returns required courses for course selected)
 * Select a list of students from specific courses
-* _Sort functionality included_
 
 ### Built With
 
@@ -79,9 +75,3 @@ java -cp lib/mysql-connector-java-5.1.47-bin.jar:. deliverablemain.deliverableMa
 * Cristina Gonzales
 * Kevin Halliwell
 * Brandon Kynsi
-
-### Acknowledgements
-
-```
-TBD Will be updated before submitting
-```
