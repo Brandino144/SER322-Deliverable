@@ -65,7 +65,7 @@ public class SubmitNewGrade {
         comboBox = new JComboBox();
         comboBox.setBounds(142, 71, 125, 27);
         frame.getContentPane().add(comboBox);
-        ArrayList<String> ASUIDs = fillComboBox1();
+        ArrayList<String> ASUIDs = ViewFindStudentGrades.getStudentIds(conn);
         
         for(int i = 0; i < ASUIDs.size(); i++) {
             comboBox.addItem(ASUIDs.get(i));
@@ -108,38 +108,6 @@ public class SubmitNewGrade {
         
     }
     
-    public ArrayList<String> fillComboBox1() {
-        
-        Statement stmt = null;
-        ResultSet rs = null;
-        
-        ArrayList<String> ids = new ArrayList<String>();
-        
-        try {
-            //String query = "SELECT * FROM GRADES";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT * FROM GRADES");
-            
-            while (rs.next()) {
-                ids.add(rs.getString("ASU ID"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return ids;
-    }
-    
     public ArrayList<String> fillComboBox2() {
         Statement stmt = null;
         ResultSet rs = null;
@@ -149,10 +117,10 @@ public class SubmitNewGrade {
         try {
             //String query = "SELECT * FROM GRADES";
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT * FROM GRADES");
+            rs = stmt.executeQuery("SELECT DISTINCT `COURSE ID` FROM GRADES");
             
             while (rs.next()) {
-                ids.add(rs.getString("COURSE ID"));
+                ids.add(rs.getString(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -173,7 +141,6 @@ public class SubmitNewGrade {
     
     public void submitButton() {
         PreparedStatement stmt = null;
-        
         try {
             String query = "UPDATE GRADES SET GRADE =" + txtEnterGpa.getText() + "WHERE ASU ID = " + comboBox.getSelectedItem() + " AND Course ID = " + comboBox_1.getSelectedItem();
             stmt = conn.prepareStatement(query);
