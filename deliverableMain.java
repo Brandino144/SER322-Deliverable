@@ -55,6 +55,7 @@ public class deliverableMain {
                 e.printStackTrace();
             }
     }
+   
     
     
     public static void main(String[] args) {
@@ -76,7 +77,7 @@ public class deliverableMain {
             }
         });
         
-        app.close();
+        //app.close();
         
     }
 

@@ -11,19 +11,28 @@ import javax.swing.JButton;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class DataPage {
 
     public JFrame frame;
-    private JTable table;
+    private JTextArea table;
 
     private Connection conn;
+    
+    private JRadioButton rdbtnStudents;
     
     /**
      * Create the application.
@@ -46,7 +55,7 @@ public class DataPage {
         lblWhichDataWould.setBounds(328, 17, 236, 16);
         frame.getContentPane().add(lblWhichDataWould);
         
-        JRadioButton rdbtnStudents = new JRadioButton("Students");
+        rdbtnStudents = new JRadioButton("Students");
         rdbtnStudents.setBounds(49, 45, 141, 23);
         frame.getContentPane().add(rdbtnStudents);
         
@@ -74,6 +83,12 @@ public class DataPage {
         btnSubmit.setBounds(380, 80, 117, 29);
         frame.getContentPane().add(btnSubmit);
         
+        btnSubmit.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+               submitButtonPressed();
+            } 
+          } );
+        
         JButton btnGoBack = new JButton("Go Back");
         btnGoBack.setBounds(6, 6, 117, 29);
         frame.getContentPane().add(btnGoBack);
@@ -91,7 +106,7 @@ public class DataPage {
         comboBox.addItem("Descending");
         frame.getContentPane().add(comboBox);
         
-        table = new JTable();
+        table = new JTextArea();
         table.setBounds(49, 155, 784, 568);
         frame.getContentPane().add(table);
         
@@ -104,5 +119,44 @@ public class DataPage {
         bg.add(rdbtnAdministrators);
         bg.add(btnSubmit);
         bg.add(btnGoBack);
+    }
+    
+    void displayStudents() {
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        if (conn == null) {
+            return;
+        }
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM STUDENT");
+
+            table.setText("First Name\tLastName\tASU ID\n");
+            while (rs.next()) {
+                String newline = rs.getString(1) + "\t" + rs.getString(2) + "\t" + rs.getString(5) + "\n";
+                table.setText(table.getText()+newline);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error inserting into the customer table");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing sql statement");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    void submitButtonPressed() {
+        if(rdbtnStudents.isSelected()) {
+            displayStudents();
+        }
+        
     }
 }
